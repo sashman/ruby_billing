@@ -8,6 +8,7 @@ module RubyBilling
     end
 
     def total
+      0
     end
   end
 end

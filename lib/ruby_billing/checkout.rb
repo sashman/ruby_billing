@@ -10,6 +10,8 @@ module RubyBilling
     end
 
     def total
+      return Money.new(0) if @items.empty?
+
       @items
         .map(&:price)
         .inject { |sum, price| sum + price }

@@ -10,8 +10,10 @@ RSpec.describe RubyBilling::Checkout do
       co = RubyBilling::Checkout.new(nil)
       item = RubyBilling::Item.new("001", "test", 100)
       co.scan(item)
+      co.scan(item)
+      co.scan(item)
 
-      expect(co.total).to eq(Money.new(100))
+      expect(co.total).to eq(Money.new(300))
     end
   end
 end

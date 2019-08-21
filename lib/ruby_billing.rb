@@ -3,6 +3,7 @@ require "ruby_billing/checkout"
 require "ruby_billing/item"
 require "ruby_billing/promotional_rules"
 require "ruby_billing/total_threshold_rule"
+require "ruby_billing/product_quantity_threshold_rule"
 require "money"
 
 module RubyBilling

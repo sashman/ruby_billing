@@ -1,12 +1,19 @@
 module RubyBilling
   class PromotionalRules
     def initialize
-      @per_product_rules = []
+      @item_list_rules = []
       @total_threshold_rules = []
     end
 
-    def add_per_product_rule(rule)
-      @per_product_rules.push(rule)
+    def add_item_list_rule(rule)
+      @item_list_rules.push(rule)
+    end
+
+    def amend_items(item_list)
+      return item_list if @item_list_rules.empty?
+
+      @item_list_rules
+        .inject(item_list) { |list, rule| rule.execute(list) }
     end
 
     def add_total_threshold_rule(rule)

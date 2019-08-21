@@ -12,12 +12,14 @@ module RubyBilling
     def total
       return Money.new(0) if @items.empty?
 
+      @items = @promotional_rules.amend_items(@items) if @promotional_rules
+
       total = @items
-        .map(&:price)
-        .inject { |sum, price| sum + price }
+              .map(&:price)
+              .inject { |sum, price| sum + price }
 
       return total unless @promotional_rules
-      
+
       @promotional_rules.calculate_total(total)
     end
   end

@@ -9,5 +9,9 @@ module RubyBilling
     def price
       @price
     end
+
+    def product_code
+      @product_code
+    end
   end
 end

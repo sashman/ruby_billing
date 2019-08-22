@@ -4,25 +4,8 @@ RSpec.describe RubyBilling::Checkout do
       before do
         promotions = RubyBilling::PromotionalRules.new
 
-        percent_threshold_rule =
-          RubyBilling::TotalThresholdRule.new(true, Money.new(6000)) do |total|
-            total * 0.9
-          end
-
-        product_code = "001"
-        price_reduction_001_list_rule =
-          RubyBilling::ProductQuantityThresholdRule.new(product_code, true, 1) do |items|
-            items.map do |item|
-              if item.product_code == product_code
-                RubyBilling::Item.new(product_code, "test", 850)
-              else
-                item
-              end
-            end
-          end
-
-        promotions.add_total_threshold_rule(percent_threshold_rule)
-        promotions.add_item_list_rule(price_reduction_001_list_rule)
+        promotions.add_total_threshold_rule(RubyBilling::TOTAL_10_PERCENT_OFF_PROMOTION)
+        promotions.add_item_list_rule(RubyBilling::LAVENDER_HEART_PROMOTION)
 
         @co = RubyBilling::Checkout.new(promotions)
         @item001 = RubyBilling::Item.new("001", "Lavender heart", 925)

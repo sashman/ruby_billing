@@ -46,6 +46,12 @@ Finished in 0.0037 seconds (files took 0.18813 seconds to load)
 
 ```
 
+## Dockerized example
+
+```
+docker build -t ruby_billing . &&  docker run ruby_billing
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
